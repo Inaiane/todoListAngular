@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="appLogin">
+<head>
+	<meta charset="UTF-8">
+	<title>Todo List</title>
+	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="vendor/bootstrap/css/yeti.min.css">
+	<link rel="stylesheet" href="vendor/bootstrap/css/font-awesome.min.css">
+	<link rel="stylesheet" href="resource/css/style.css">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="navbar">
+		
+	  		<h1>Todo List </h1>
+		
+	</div>
+
+	<div class="panel-body">
+		<ng-view> </ng-view>
+	</div>
+	
+	
+	<script src="vendor/angular/angular.min.js"></script>
+	<script src="vendor/angular/angular-route.min.js"></script>
+	<script src="vendor/jquery-1.11.1.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="appLogin.js"></script>
+	<script src="controller/loginCtrl.js"></script>
+	<script src="controller/novoUsuarioCtrl.js"></script>
+	<script src="controller/listaCtrl.js"></script>
+	<script src="controller/cadastroListaCtrl.js"></script>
+</body>
+</html>

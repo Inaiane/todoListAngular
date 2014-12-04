@@ -1,0 +1,52 @@
+body{
+	background: #f0f2f2;
+	margin: 0;
+	
+}
+
+html{
+	overflow-x: hidden;
+}
+
+.navbar{
+	background: #fff;
+	border: 1px solid #e7e7e7;
+	padding-bottom: 2%;
+}
+h1{
+	text-align: center;
+}
+
+.form-main{
+	background: #fff;
+	margin: auto 0 25px;
+	margin-top: 15%;
+	padding: 40px 40px;
+}
+#tarefa{
+	padding-top: 5%;
+}
+
+#tarefa .thumbnail{
+	background: #19bc9c;
+	color: #fff;
+	font-weight: 200;
+	text-align: center;
+}
+#novaTarefa{
+	border-radius: 100%;
+	
+}
+
+.page-header{
+	margin: 0px 0 40px!important;
+}
+#btnEntrar{
+	padding-left: 30%;
+	padding-right: 30%;
+	padding-bottom: 10%;
+}
+
+.btnList{
+	cursor:pointer;
+}
