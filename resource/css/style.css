@@ -9,9 +9,9 @@ html{
 }
 
 .navbar{
-	background: #fff;
 	border: 1px solid #e7e7e7;
-	padding-bottom: 2%;
+	padding-bottom: 1%;
+	color:#fff;
 }
 h1{
 	text-align: center;
@@ -35,6 +35,8 @@ h1{
 }
 #novaTarefa{
 	border-radius: 100%;
+	margin-right: 150px;
+	margin-top: -15px;
 	
 }
 
@@ -50,3 +52,4 @@ h1{
 .btnList{
 	cursor:pointer;
 }
+

@@ -1,4 +1,12 @@
-app.controller('novoUsuarioCtrl', function($scope){
+app.controller('novoUsuarioCtrl', function($scope, serviceNovoLogin){
 
-	console.log("novoUsuarioCtrl");
+
+	$scope.login = serviceNovoLogin.novoLogin;
+	
+
+	$scope.novoLogin = function(nome, email, senha){
+		$scope.login.push({'nome':nome,'email':email, 'senha':senha});
+		console.log($scope.login);
+		window.location.replace("#/lista");
+	};
 });

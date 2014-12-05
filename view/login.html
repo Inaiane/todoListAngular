@@ -10,10 +10,10 @@
 			</div>
 
 		    <div class="form-group">
-		        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+		        <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model="email">
 		    </div>
 		    <div class="form-group">
-		        	<input  type="password" class="form-control" id="inputPassword" placeholder="Senha">
+		        	<input  type="password" class="form-control" id="inputPassword" placeholder="Senha" ng-model="senha">
 		        	<br>
 				    <label>
 				    	<input type="checkbox"> Continuar logado
@@ -21,7 +21,7 @@
 		    </div>
 		    <div class="form-group">
 		        <div class="col-lg-6 pull-right">
-		        	<button type="submit" class="btn btn-primary" id="btnEntrar">Entrar</button>
+		        	<button type="submit" class="btn btn-primary" id="btnEntrar" ng-click="logar(email,senha)">Entrar</button>
 		    	</div>
 		    </div>
 		    <div class="form-group text-center">

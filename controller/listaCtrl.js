@@ -1,9 +1,10 @@
-app.controller('listaCtrl', function($scope, serviceTask){
+app.controller('listaCtrl', function($scope, serviceTask,serviceLogin){
 
 	
 	console.log("listaCtrl");
 
 	$scope.listTasks = serviceTask.list;
+	serviceTask.task = {nome:"",itens:[],completos:[]};
 
 	$scope.selecionarLista = function(list){
 		serviceTask.task = list;
@@ -13,5 +14,7 @@ app.controller('listaCtrl', function($scope, serviceTask){
 	$scope.novaLista = function(){
 		window.location.replace("#/cadastroLista");
 	}
+
+
 
 });

@@ -8,20 +8,20 @@
 			</div>
 
 	   		<div class="form-group">
-		        <input type="text" class="form-control" id="inputEmail" placeholder="Nome">
+		        <input type="text" class="form-control" id="inputEmail" placeholder="Nome" ng-model="nome">
 		    </div>
 		    <div class="form-group">
-		        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+		        <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model="email">
 		    </div>
 		    <div class="form-group">
-		        	<input  type="password" class="form-control" id="inputPassword" placeholder="Senha">
+		        	<input  type="password" class="form-control" id="inputPassword" placeholder="Senha" ng-model="senha">
 		    </div>
 		    <div class="form-group">
 		        	<input  type="password" class="form-control" id="inputPassword" placeholder="Confirmar Senha">
 		    </div>
 		    <div class="form-group">
 		      <div class="col-lg-4 col-lg-offset-4">
-		        <button type="submit" class="btn btn-primary">Criar Conta</button>
+		        <button type="submit" class="btn btn-primary" ng-click="novoLogin(nome,email,senha)">Criar Conta</button>
 		     </div>
 		    </div>
 	  </div>
