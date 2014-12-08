@@ -28,5 +28,23 @@ app.controller('cadastroListaCtrl', function($scope, serviceTask){
 		}
 		window.location.replace("#/lista");
 	};
+        
+        $scope.removerItem = function(itemTask){
+            var index = $scope.task.itens.indexOf(itemTask);
+            $scope.task.itens.splice(index);  
+        };
+        $scope.removeTodosItens = function(itemTask){
+            
+            
+            var index = serviceTask.list.push(itemTask);
+        
+            
+            console.log(index);
+            $scope.task.itens.splice(index);
+            //return index;
+            
+       };
+        
+   
 
 });

@@ -16,7 +16,9 @@ app.controller('loginCtrl', function($scope,serviceLogin){
 			window.location.replace("#/lista");
 		}
 		else{
+                        $scope.login = false;
 			console.log("Nome ou senha inválidos!");
+                        
 		}
 	}
 });
