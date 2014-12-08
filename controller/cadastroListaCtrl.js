@@ -29,22 +29,42 @@ app.controller('cadastroListaCtrl', function($scope, serviceTask){
 		window.location.replace("#/lista");
 	};
         
-        $scope.removerItem = function(itemTask){
-            var index = $scope.task.itens.indexOf(itemTask);
-            $scope.task.itens.splice(index);  
-        };
-        $scope.removeTodosItens = function(itemTask){
-            
-            
-            var index = serviceTask.list.push(itemTask);
-        
-            
-            console.log(index);
-            $scope.task.itens.splice(index);
-            //return index;
-            
-       };
-        
-   
+    $scope.removerItem = function(indexTask){
+       
 
+        $scope.task.itens.splice(indexTask,1);  
+    };
+    
+    $scope.removeTodosItens = function(){
+
+        for(var i=0; i< $scope.indexes.length ; i++){
+
+ 			$scope.task.itens[$scope.indexes[i]] = "";
+   		}
+   		console.log($scope.task.itens);
+   		while($scope.task.itens.indexOf("") > -1){
+   			var idx = $scope.task.itens.indexOf("");
+   			console.log(idx);
+   			$scope.task.itens.splice(idx,1);
+
+   		}
+   		
+   		console.log($scope.task.itens);
+    };
+
+    $scope.indexes = [];
+	console.log($scope.indexes);
+
+    $scope.teste = function(index){
+   		console.log(index);
+   		while($scope.indexes.indexOf(index) > -1){
+
+   			$scope.indexes.splice($scope.indexes.indexOf(index),1);
+   			console.log($scope.indexes);
+   			return;
+   		}
+
+   		$scope.indexes.push(index);
+   		console.log($scope.indexes);
+   };
 });
