@@ -37,34 +37,40 @@ app.controller('cadastroListaCtrl', function($scope, serviceTask){
     
     $scope.removeTodosItens = function(){
 
-        for(var i=0; i< $scope.indexes.length ; i++){
+        for(var i=0; i < $scope.indexes.length; i++){
 
  			$scope.task.itens[$scope.indexes[i]] = "";
    		}
    		console.log($scope.task.itens);
+
+
+
    		while($scope.task.itens.indexOf("") > -1){
    			var idx = $scope.task.itens.indexOf("");
    			console.log(idx);
    			$scope.task.itens.splice(idx,1);
 
+
+
    		}
    		
-   		console.log($scope.task.itens);
+
     };
 
     $scope.indexes = [];
 	console.log($scope.indexes);
 
-    $scope.teste = function(index){
+    $scope.itensMarcados = function(index){
+
    		console.log(index);
    		while($scope.indexes.indexOf(index) > -1){
-
+   			console.log(index);
    			$scope.indexes.splice($scope.indexes.indexOf(index),1);
-   			console.log($scope.indexes);
    			return;
    		}
 
    		$scope.indexes.push(index);
    		console.log($scope.indexes);
+
    };
 });
