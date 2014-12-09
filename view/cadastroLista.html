@@ -11,27 +11,39 @@
 		
 		<h5>Novo item</h5>
 		<div class="input-group">
-			<input type="text" class="form-control" ng-keypress="addItemKeyPress($event,item)" ng-model="item" placeholder="Novo Item"/>
+			<input id="new-todo" class="form-control" type="text" ng-model="item"  size="30"
+			placeholder="Novo Item" ng-keyup="addTodo($event,item)"/> 
 			<span class="input-group-btn">
-				<a class="btn btn-default" ng-click="addItem(item)">Add</a>
+				<a class="btn btn-default" ng-click="addTodoClick(item)">Add</a>
 			</span>
 		</div>
 		<div class="page-header">
 			<div class=" col-lg-12 input-group" style="margin-top: 15px;">
-				<div class="col-lg-10">
-					<a ng-click="" class="btn btn-primary pull-right" style=""> Check </a>
+				<div class="col-lg-9">
+					<!--<a ng-click="" class="btn btn-primary pull-right" style=""> Check </a>-->
+					<div ng-show="isTodo()">
+					<input id="toggle-all" type="checkbox" ng-model="markAll"
+					ng-click="toggleMarkAll()"/>
+					<label for="toggle-all">Selecionar todos</label>
 				</div>
-				<div class="col-lg-2 pull-right">
-					<a ng-click="removeTodosItens()" class="btn btn-info" style=""> Remover </a>
+				</div>
+
+				<div class="col-lg-3 pull-right">
+					<a id="clear-completed" ng-click="clear()" ng-show="hasDone()" class="btn btn-info" style=""> Remover  <span >{{(task.itens.length - remaining())}} {{itemText()}}</span>
+					</a>
 				</div>
 			</div>
 		</div>
 		<div class="panel-body">
-			<div class="col-lg-12" ng-repeat="itemTask in task.itens">
-				<h4>
-				<!--<i class="fa fa-check fa-2x"  style="color: #009688">-->
-				</i><input type="checkbox"   ng-click="itensMarcados($index)">&ensp;{{itemTask.item}} 
-                <i class="fa fa-times pull-right " ng-click="removerItem($index)"></i></h4>
+			<div id="todo-list" class="unstyled">
+				<div ng-repeat="itemTask in task.itens" ng-dblclick="toggleEditMode()">
+					<div class="view" ng-keyup="editTodo()">
+						<input type="checkbox" ng-model="itemTask.done"/>
+						<span class="done-{{itemTask.done}}">{{itemTask.item}}</span>
+					</div>
+					<!--<input class="edit" type="text" ng-model="todo.text"
+					ng-keyup="editOnEnter(todo)"/>-->
+				</div>
 			</div>
 		</div>
 

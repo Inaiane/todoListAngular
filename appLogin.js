@@ -30,6 +30,7 @@ app.config(function($routeProvider) {
 app.service("serviceTask",function(){
 	this.task = {nome:"",itens:[],completos:[]};
 	this.list = [];
+	
 });
 app.service("serviceLogin", function(){
 	this.login = {email:'Inaiane', senha:'nai'};

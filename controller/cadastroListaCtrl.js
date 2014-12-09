@@ -1,76 +1,85 @@
 app.controller('cadastroListaCtrl', function($scope, serviceTask){
-	console.log("cadastroListaCtrl");
+  $scope.markAll = false;
+  $scope.task = serviceTask.task;
 
-	$scope.task = serviceTask.task;
-	console.log($scope.task);
 
-	if($scope.task.nome === ""){
+
+
+if($scope.task.nome === ""){
 		$scope.task.newTask = true;
 	}else{
 		$scope.task.newTask = false;
-	}
-	
-	$scope.addItem = function(item){
-		$scope.task.itens.push({'item':item});
-		$scope.item = "";
-	}
-
-	$scope.addItemKeyPress = function(e, item){
-		if(e.keyCode === 13){
-			$scope.task.itens.push({'item':item});
-			$scope.item = "";
-		}
-	}
-
-	$scope.finalizarLista = function(){
-		if($scope.task.nome !== "" && $scope.task.newTask){
-			serviceTask.list.push($scope.task);
-		}
-		window.location.replace("#/lista");
-	};
-        
-    $scope.removerItem = function(indexTask){
-       
-
-        $scope.task.itens.splice(indexTask,1);  
-    };
+}  
     
-    $scope.removeTodosItens = function(){
+  $scope.addTodo = function(e, item) {
+      if(e.keyCode == 13){
+          $scope.task.itens.push({'item':item});
+          $scope.item = "";
+          console.log($scope.task.itens.text);
+      }
+  };
 
-        for(var i=0; i < $scope.indexes.length; i++){
+  $scope.addTodoClick = function(item) {
+      
+          $scope.task.itens.push({'item':item});
+          $scope.item = "";
+      
+  };
 
- 			$scope.task.itens[$scope.indexes[i]] = "";
-   		}
-   		console.log($scope.task.itens);
+  $scope.isTodo = function(){
+      return $scope.task.itens.length > 0;  
+  }
+  $scope.toggleEditMode = function(){
+      $(e.target).closest('li').toggleClass('editing');
+  };
+  $scope.editOnEnter = function(itemTask){
+      if(e.keyCode == 13 && $scope.task.item){
+          $scope.toggleEditMode();
+      }
+  };
+    
+  $scope.remaining = function() {
+    var count = 0;
+    angular.forEach($scope.task.itens, function(itemTask) {
+      count += itemTask.done ? 0 : 1;
+    });
+    return count;
+  };
+
+  $scope.hasDone = function() {
+      return ($scope.task.itens.length != $scope.remaining());
+  }    
+    
+  $scope.itemText = function() {
+      return ($scope.task.itens.length - $scope.remaining() > 1) ? "items" : "item";     
+  };
+      
+  $scope.toggleMarkAll = function() {
+      angular.forEach($scope.task.itens, function(itemTask) {
+        itemTask.done =$scope.markAll;
+      });
+  };
+  
+  $scope.clear = function() {
+    var oldTodos = $scope.task.itens;
+    $scope.task.itens = [];
+    angular.forEach(oldTodos, function(itemTask) {
+      if (!itemTask.done) $scope.task.itens.push(itemTask);
+    });
+  };
 
 
+  $scope.finalizarLista = function(){
+  console.log($scope.task);
 
-   		while($scope.task.itens.indexOf("") > -1){
-   			var idx = $scope.task.itens.indexOf("");
-   			console.log(idx);
-   			$scope.task.itens.splice(idx,1);
-
-
-
-   		}
-   		
-
-    };
-
-    $scope.indexes = [];
-	console.log($scope.indexes);
-
-    $scope.itensMarcados = function(index){
-
-   		console.log(index);
-   		while($scope.indexes.indexOf(index) > -1){
-   			console.log(index);
-   			$scope.indexes.splice($scope.indexes.indexOf(index),1);
-   			return;
-   		}
-
-   		$scope.indexes.push(index);
-   		console.log($scope.indexes);
-
-   };
+    if($scope.task.nome !== "" && $scope.task.newTask){
+      serviceTask.list.push($scope.task);
+      //localStorage.setItem("lista", angular.toJson(serviceTask.list));
+    }
+    
+    console.log();
+    window.location.replace("#/lista");
+  };
+    
 });
+
